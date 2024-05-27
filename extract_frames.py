@@ -24,7 +24,15 @@ def extract_frames(video_path, output_folder, fps=1):
 
 if __name__ == "__main__":
     # Example usage
-    video_path = "/Users/rupal/Documents/GitHub/Ego4d/dataset/takes/nus_cpr_06_2/frame_aligned_videos/aria01_214-1.mp4"
-    output_folder = "/Users/rupal/Documents/GitHub/Ego4d/dataset/takes/nus_cpr_06_2/frames_from_videos/aria01_214-1"
+    base_dir = "/Users/rupal/Documents/GitHub/Ego4d/dataset/takes/indiana_music_14_3"
+    video_names = ["aria01_214-1.mp4", "cam01.mp4", "cam02.mp4", "cam03.mp4", "cam04.mp4"]
 
-    extract_frames(video_path, output_folder)
+    for video_name in video_names:
+        video_path = os.path.join(base_dir, "frame_aligned_videos", video_name)
+        output_folder = os.path.join(base_dir, "frames_from_videos", video_name.split(".")[0])
+
+        extract_frames(video_path, output_folder)
+
+
+        print("reading from ", video_path)
+        print("writing to", output_folder)
